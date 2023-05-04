@@ -1,50 +1,109 @@
 @import url("photographer.css");
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
 
-
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901c1c;
+  margin-right: 100px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.photographer_section article div {
+  justify-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.photographer_section article div h2 {
+  color: #d3573c;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer_section article div img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer_section article p {
+  margin: 3px 0px;
+}
+.info-card {
+  position: sticky;
+  width: 376px;
+  height: 89px;
+  left: 100%;
+  bottom: 0%;
+  background: #db8876;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.info-card div {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: right;
+  color: #000000;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+}
+.info-card div svg path {
+  fill: #000000;
+}
+.location {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #901c1c;
+}
+.tagline {
+  font-size: 10px;
+  line-height: 13px;
+  text-align: center;
+  color: #000000;
+}
+.price {
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: #757575;
 }
