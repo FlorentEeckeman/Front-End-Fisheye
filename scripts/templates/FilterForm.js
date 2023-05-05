@@ -17,8 +17,9 @@ class FilterForm {
     const AdaptedFilterLib = new Filter(this.Photos, sort);
     const FilteredMovies = AdaptedFilterLib.filterBySort();
 
+    localStorage.setItem("Photos", JSON.stringify(FilteredMovies));
     FilteredMovies.forEach((Photo) => {
-      const Template = new PhotoCard(Photo);
+      const Template = new PhotoCard(Photo, sort);
       this.$moviesWrapper.appendChild(Template.createPhotoCard());
     });
   }

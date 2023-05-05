@@ -1,7 +1,7 @@
 class PhotoCard {
-  constructor(photos) {
+  constructor(photos, sort) {
     this._photos = photos;
-
+    this._sort = sort;
     this.$wrapper = document.createElement("article");
     this.$wrapper.classList.add("photo-card-wrapper");
   }
@@ -11,7 +11,6 @@ class PhotoCard {
   }
   onClickImg() {
     this.$wrapper.querySelector(".photo").addEventListener("click", () => {
-      console.log("clicked");
       this.displayLightboxModal();
     });
   }
@@ -19,6 +18,18 @@ class PhotoCard {
   displayLightboxModal() {
     this.$modal = document.getElementById("lightBox_modal");
     this.$modal.style.display = "block";
+
+    const index = JSON.parse(localStorage.Photos).findIndex(
+      (x) => x.id === this._photos.id
+    );
+    localStorage.setItem("index", JSON.stringify(index));
+    if (JSON.parse(localStorage.instance) === false) {
+      console.log("trigger" + JSON.parse(localStorage.instance));
+      const modal = new LightBox(index);
+      modal.render();
+      localStorage.setItem("instance", JSON.stringify(true));
+      console.log("trigger" + JSON.parse(localStorage.instance));
+    }
   }
 
   createPhotoCard() {

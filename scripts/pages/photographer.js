@@ -25,7 +25,7 @@ async function displayData(photographers, media) {
     if (photographer.id == urlSearchParams.get("id")) {
       const photographerModel = photographerFactory(photographer, media);
       const userCardDOM = photographerModel.getUserCardDOM();
-      console.log(userCardDOM.firstChild.firstChild);
+
       contactButton.parentNode.insertBefore(
         userCardDOM.firstChild.firstChild,
         contactButton
@@ -45,7 +45,7 @@ function getPrice(photographers, id) {
   return res;
 }
 
-async function displayPhotos(photographers, media) {
+function displayPhotos(photographers, media) {
   var urlSearchParams = new URL(document.location).searchParams;
   const id = urlSearchParams.get("id");
   const photosSection = document.querySelector(".photograph-media");
@@ -53,7 +53,7 @@ async function displayPhotos(photographers, media) {
   let count = 0;
   const price = getPrice(photographers, id);
   media.forEach((photo) => {
-    const Template = new PhotoCard(photo);
+    const Template = new PhotoCard(photo, "none");
     photosSection.appendChild(Template.createPhotoCard());
     count += photo.likes;
   });
@@ -79,10 +79,11 @@ async function init() {
 
   displayData(photographers);
   const userPhoto = getUserPhoto(media);
-
+  localStorage.setItem("Photos", JSON.stringify(userPhoto));
   displayPhotos(photographers, userPhoto);
   const Filter = new FilterForm(userPhoto);
   Filter.render();
+  localStorage.setItem("instance", JSON.stringify(false));
 }
 
 init();

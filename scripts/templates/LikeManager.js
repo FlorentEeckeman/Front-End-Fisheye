@@ -1,4 +1,4 @@
-class LikeMagnager {
+class LikeManager {
   constructor(Photos) {
     this.Photos = Photos;
 

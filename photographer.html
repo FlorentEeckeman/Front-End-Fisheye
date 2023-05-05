@@ -24,7 +24,24 @@
       <div class="photograph-media"></div>
       
     </main>
-    <div id="lightBox_modal"></div>
+    <div id="lightBox_modal">
+      <svg class="lightBox_modal-close" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="closeLightBoxModal()">
+        <path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901C1C"/>
+        </svg>
+    <div class="lightBox_modal-display">
+      <div class="svg-left-arrow">
+        <svg width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <path id="svg-left-arrow-fill" d="M29.6399 42.36L11.3199 24L29.6399 5.64L23.9999 -2.46532e-07L-0.000107861 24L23.9999 48L29.6399 42.36Z" fill="#911C1C"/>
+        </svg>
+        </div>
+      <div class="lightBox_modalPhoto"></div>
+      <div class="svg-right-arrow">
+        <svg width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="svg-right-arrow-fill" d="M0.360108 5.64L18.6801 24L0.360107 42.36L6.00011 48L30.0001 24L6.00011 3.88195e-06L0.360108 5.64Z" fill="#911C1C"/>
+          </svg>          
+      </div>
+    </div>
+    </div>
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -46,14 +63,16 @@
         </form>
       </div>
     </div>
+    <script src="/scripts/utils/lightBox.js"></script>
     <script src="/scripts/lib/filter.js"></script>
     <script src="/scripts/templates/FilterForm.js"></script>
+    <script src="/scripts/templates/lightBox.js"></script>
     <script src="/scripts/templates/photoCard.js"></script>
     <script src="/scripts/utils/infoCard.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/lightBox.js"></script>
+    <script src="scripts/utils/header.js"></script>
   </body>
 </html>
