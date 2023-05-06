@@ -132,16 +132,9 @@ class LightBox {
     if (this.$PhotomWrapper.querySelector(".lightBox_modal-display")) {
       this.$PhotomWrapper.querySelector(".lightBox_modal-display").remove();
     }
-    //const elem = document.querySelector(".lightBox_modalPhoto");
-    // elem.innerHTML = null;
-    //.innerHTML = null;
   }
 
   render() {
     this.displayPhoto();
-
-    //this.onChangeFilter();
-
-    //this.$filterFormWrapper.appendChild(this.$wrapper);
   }
 }

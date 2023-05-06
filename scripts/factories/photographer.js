@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+function photographerFactory(data, link) {
   const { name, portrait, country, city, tagline, price, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -6,35 +6,24 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
     const article = document.createElement("article");
-    const divTop = document.createElement("div");
-    divTop.setAttribute("aria-labe", "lien vers la page de " + name);
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    img.setAttribute("alt", "photo de " + name);
-    const h2 = document.createElement("h2");
-    h2.setAttribute("class", "name");
-    h2.textContent = name;
-    const location = document.createElement("p");
-    location.setAttribute("class", "location");
-    location.textContent = city + ", " + country;
-    const taglineText = document.createElement("p");
-    taglineText.setAttribute("class", "tagline");
-    taglineText.textContent = tagline;
-    const prix = document.createElement("p");
-    prix.setAttribute("class", "price");
-    prix.textContent = price + "€/jour";
 
-    article.appendChild(divTop);
-    divTop.appendChild(img);
-    divTop.appendChild(h2);
-    article.appendChild(location);
-    article.appendChild(taglineText);
-    article.appendChild(prix);
+    const divTop = `<div aria-labe="lien vers la page de ${name}">
+      <img src="${picture}" alt="photo de ${name}"></img>
+      <h2 class="name">${name}</h2>
+    </div>`;
 
-    divTop.addEventListener("click", () => {
-      window.location.replace(url + "/photographer.html?id=" + id);
-    });
-
+    article.innerHTML = divTop;
+    if (link) {
+      article.addEventListener("click", () => {
+        window.location.replace(url + "/photographer.html?id=" + id);
+      });
+    }
+    const userHeaderInfoCard = `
+    <p class="location">${city}, ${country}</p>
+    <p class="tagline">${tagline}</p>
+    <p class="price">${price}€/jour</p>
+    `;
+    article.innerHTML += userHeaderInfoCard;
     return article;
   }
   return { name, picture, getUserCardDOM };

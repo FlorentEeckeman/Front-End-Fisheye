@@ -25,7 +25,7 @@ class FilterForm {
   }
 
   onChangeFilter() {
-    this.$wrapper.querySelector("form").addEventListener("change", (e) => {
+    this.$wrapper.querySelector("form").addEventListener("input", (e) => {
       const actor = e.target.value;
       this.filterMovies(actor);
     });
@@ -38,7 +38,7 @@ class FilterForm {
   render() {
     const filterForm = `
             <form class="filter-form" action="#" method="POST">
-                <label for="filter-select">Choississez votre acteur préféré : </label>
+                <label for="filter-select">Trier par </label>
                 <select name="filter-select" id="filter-select">
                     <option value="like">Popularité</option>
                     <option value="date">Date</option>

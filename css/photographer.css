@@ -94,8 +94,23 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 36px;
+  margin: 40px 100px;
 }
-
+.filter-form {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 25px;
+}
+.filter-form label {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  color: #000000;
+}
 .photograph-media {
   display: flex;
   flex-wrap: wrap;
