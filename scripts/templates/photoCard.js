@@ -10,6 +10,7 @@ class PhotoCard {
     return this._photos;
   }
   onClickImg() {
+    this.$wrapper.querySelector(".photo").removeEventListener("click", this);
     this.$wrapper.querySelector(".photo").addEventListener("click", () => {
       this.displayLightboxModal();
     });
@@ -23,13 +24,9 @@ class PhotoCard {
       (x) => x.id === this._photos.id
     );
     localStorage.setItem("index", JSON.stringify(index));
-    if (JSON.parse(localStorage.instance) === false) {
-      console.log("trigger" + JSON.parse(localStorage.instance));
-      const modal = new LightBox(index);
-      modal.render();
-      localStorage.setItem("instance", JSON.stringify(true));
-      console.log("trigger" + JSON.parse(localStorage.instance));
-    }
+
+    const modal = new LightBox(index);
+    modal.render();
   }
 
   createPhotoCard() {
@@ -56,6 +53,7 @@ class PhotoCard {
         `;
 
     this.$wrapper.innerHTML = photoCard;
+
     this.onClickImg();
     res = this.$wrapper;
 
