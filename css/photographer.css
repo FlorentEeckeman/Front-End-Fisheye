@@ -89,7 +89,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.filter-form-wrapper {
+.filter-div {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -101,15 +101,14 @@
   align-items: center;
   column-gap: 25px;
 }
-.filter-title {
+.filter-div label {
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
 }
-.filter-border-div {
-}
+
 .filter-form {
   display: flex;
   width: 100%;

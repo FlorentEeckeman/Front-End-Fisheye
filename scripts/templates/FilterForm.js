@@ -40,7 +40,7 @@ class FilterForm {
   }
 
   render() {
-    const filterForm = `<div class="filter-border-div"></div>
+    const filterForm = `<label for="standard-select"> Trier par</label>
     <div class="custom-select" style="width:200px">
             <select id="standard-select">
               <option >Défaut</option>
