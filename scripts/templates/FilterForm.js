@@ -3,6 +3,7 @@ class FilterForm {
     this.Photos = Photos;
 
     this.$wrapper = document.createElement("div");
+    this.$wrapper.setAttribute("class", "filter-div");
     this.$filterFormWrapper = document.querySelector(".filter-form-wrapper");
     this.$moviesWrapper = document.querySelector(".photograph-media");
   }
@@ -25,9 +26,12 @@ class FilterForm {
   }
 
   onChangeFilter() {
-    this.$wrapper.querySelector("form").addEventListener("input", (e) => {
-      const actor = e.target.value;
-      this.filterMovies(actor);
+    document.querySelector(".select-items").addEventListener("click", (e) => {
+      console.log(e);
+      const actor = document.querySelector(".same-as-selected");
+
+      console.log(actor.value);
+      this.filterMovies(actor.value);
     });
   }
 
@@ -36,20 +40,21 @@ class FilterForm {
   }
 
   render() {
-    const filterForm = `
-            <form class="filter-form" action="#" method="POST">
-                <label for="filter-select">Trier par </label>
-                <select name="filter-select" id="filter-select">
-                    <option value="like">Popularité</option>
-                    <option value="date">Date</option>
-                    <option value="title">Titre</option>
-                </select>
-            </form>
-        `;
+    const filterForm = `<div class="filter-border-div"></div>
+    <div class="custom-select" style="width:200px">
+            <select id="standard-select">
+              <option >Défaut</option>
+              <option value="0">Popularité</option>
+              <option value="1">Date</option>
+              <option value="2">Titre</option>
+            </select>
+          </div>
+          <div class="filter-border-div"></div>`;
 
     this.$wrapper.innerHTML = filterForm;
-    this.onChangeFilter();
 
     this.$filterFormWrapper.appendChild(this.$wrapper);
+    filterDisplay();
+    this.onChangeFilter();
   }
 }
