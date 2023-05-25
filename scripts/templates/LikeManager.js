@@ -1,37 +1,33 @@
 class LikeManager {
-  constructor(Photos) {
-    this.Photos = Photos;
+  constructor(photos) {
+    this.photos = photos;
 
-    this.$wrapper = document.createElement("div");
-    this.$filterFormWrapper = document.querySelector(".filter-form-wrapper");
-    this.$moviesWrapper = document.querySelector(".photograph-media");
+    this.wrapper = document.createElement("div");
+    this.filterFormWrapper = document.querySelector(".filter-form-wrapper");
+    this.photoCardsWrapper = document.querySelector(".photograph-media");
   }
 
   async filterMovies(sort) {
-    this.clearMoviesWrapper();
+    this.clearPhotoCardsWrapper();
 
-    /* Vous pourrez par la suite supprimer ces lignes */
-    // const FilterLib = new FilterV1(this.Movies, actor)
-    // const FilteredMovies = await FilterLib.filterByActor()
-
-    const AdaptedFilterLib = new Filter(this.Photos, sort);
+    const AdaptedFilterLib = new Filter(this.photos, sort);
     const FilteredMovies = AdaptedFilterLib.filterBySort();
 
-    FilteredMovies.forEach((Photo) => {
-      const Template = new PhotoCard(Photo);
-      this.$moviesWrapper.appendChild(Template.createPhotoCard());
+    FilteredMovies.forEach((photo) => {
+      const Template = new photoCard(photo);
+      this.photoCardsWrapper.appendChild(Template.createPhotoCard());
     });
   }
 
   onChangeFilter() {
-    this.$wrapper.querySelector("form").addEventListener("change", (e) => {
-      const actor = e.target.value;
-      this.filterMovies(actor);
+    this.wrapper.querySelector("form").addEventListener("change", (e) => {
+      const sort = e.target.value;
+      this.filterMovies(sort);
     });
   }
 
-  clearMoviesWrapper() {
-    this.$moviesWrapper.innerHTML = "";
+  clearPhotoCardsWrapper() {
+    this.photoCardsWrapper.innerHTML = "";
   }
 
   render() {
@@ -46,9 +42,9 @@ class LikeManager {
               </form>
           `;
 
-    this.$wrapper.innerHTML = filterForm;
+    this.wrapper.innerHTML = filterForm;
     this.onChangeFilter();
 
-    this.$filterFormWrapper.appendChild(this.$wrapper);
+    this.filterFormWrapper.appendChild(this.wrapper);
   }
 }

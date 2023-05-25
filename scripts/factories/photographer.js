@@ -7,18 +7,14 @@ function photographerFactory(data, link) {
   function getUserCardDOM() {
     const article = document.createElement("article");
 
-    const divTop = `<div aria-labe="lien vers la page de ${name}">
-      <img src="${picture}" alt="photo de ${name}"></img>
-      <h2 class="name">${name}</h2>
-    </div>`;
+    const divTop = `<a href="photographer.html?id=${id}" aria-label="${name}">
+      <img src="${picture}" alt="${name}"></img>
+    
+    </a>`;
 
     article.innerHTML = divTop;
-    if (link) {
-      article.addEventListener("click", () => {
-        window.location.replace(url + "/photographer.html?id=" + id);
-      });
-    }
     const userHeaderInfoCard = `
+    <h2 class="name">${name}</h2>
     <p class="location">${city}, ${country}</p>
     <p class="tagline">${tagline}</p>
     <p class="price">${price}€/jour</p>

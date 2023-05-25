@@ -15,3 +15,9 @@ function getInfoCardDOM(likes, price, add) {
   infoCard.appendChild(totalPrice);
   return infoCard;
 }
+
+async function getPhotosByPhotographId(id) {
+  const photographers = await getPhotographers();
+
+  return photos;
+}

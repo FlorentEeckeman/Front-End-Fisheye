@@ -1,18 +1,17 @@
 class totalLikesCounter {
   constructor() {
-    this._observers = [];
+    this.observers = [];
   }
 
   subscribe(observer) {
-    this._observers.push(observer);
+    this.observers.push(observer);
   }
 
   unsubscribe(observer) {
-    this._observers = this._observers.filter((obs) => obs !== observer);
+    this.observers = this.observers.filter((obs) => obs !== observer);
   }
 
   fire(action) {
-    this._observers.forEach((observer) => observer.update(action));
-    console.log(this._observers);
+    this.observers.forEach((observer) => observer.update(action));
   }
 }

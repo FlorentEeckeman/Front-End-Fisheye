@@ -1,5 +1,14 @@
 const logo = document.querySelector(".logo");
-logo.addEventListener("click", () => {
-  let url = location.origin;
-  window.location.replace(url);
+
+["click", "keypress"].forEach((ev) => {
+  logo.addEventListener(ev, function (e) {
+    if (ev == "click") {
+      let url = location.origin;
+      window.location.replace(url);
+    }
+    if (e.keyCode == 13) {
+      let url = location.origin;
+      window.location.replace(url);
+    }
+  });
 });

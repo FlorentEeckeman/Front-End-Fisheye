@@ -23,7 +23,7 @@ class App {
       }
     });
   }
-  getPrice(photographers, id) {
+  getPhotographerPrice(photographers, id) {
     let res;
     photographers.forEach((photographer) => {
       if (photographer.id == id) {
@@ -37,25 +37,24 @@ class App {
     var urlSearchParams = new URL(document.location).searchParams;
     const id = urlSearchParams.get("id");
     const photosSection = document.querySelector(".photograph-media");
-    const main = document.querySelector("#main");
     let count = 0;
-    const price = this.getPrice(photographers, id);
+
+    const price = this.getPhotographerPrice(photographers, id);
     media.forEach((photo) => {
-      const Template = new PhotoCard(photo, "none", this.totalLikesCounter);
+      const Template = new PhotoCard(photo, this.totalLikesCounter, media);
       photosSection.appendChild(Template.createPhotoCard());
       count += photo.likes;
     });
 
-    document.querySelector(".total-likes").innerText = count;
+    document.querySelector(".total-likes").innerHTML = `<h2>${count}</h2>`;
     document.querySelector(".daily-fee").innerText = price + "€ / jour";
-    // const infoCard = getInfoCardDOM(count, price, media);
-    //main.appendChild(infoCard);
   }
 
   getUserPhoto(media) {
     var urlSearchParams = new URL(document.location).searchParams;
     const id = urlSearchParams.get("id");
     let res = [];
+
     media.forEach((photo) => {
       if (photo.photographerId == id) {
         res.push(photo);
@@ -67,14 +66,13 @@ class App {
   async init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers();
-
-    this.displayData(photographers);
     const userPhoto = this.getUserPhoto(media);
-    localStorage.setItem("Photos", JSON.stringify(userPhoto));
-    this.displayPhotos(photographers, userPhoto);
-    const Filter = new FilterForm(userPhoto);
+    const Filter = new FilterForm(userPhoto, this.totalLikesCounter);
     Filter.render();
-    localStorage.setItem("instance", JSON.stringify(false));
+    console.log("media ", await getPhotographers());
+    this.displayData(photographers);
+
+    this.displayPhotos(photographers, userPhoto);
   }
 }
 const app = new App();

@@ -22,6 +22,5 @@ function sendData() {
 const element = document.querySelector("form");
 element.addEventListener("submit", function (event) {
   event.preventDefault();
-  // actual logic, e.g. validate the form
   sendData();
 });
