@@ -45,7 +45,7 @@ class App {
       photosSection.appendChild(Template.createPhotoCard());
       count += photo.likes;
     });
-
+    // affichage des éléments généraux sur le photographe
     document.querySelector(".total-likes").innerHTML = `<h2>${count}</h2>`;
     document.querySelector(".daily-fee").innerText = price + "€ / jour";
   }
@@ -69,7 +69,7 @@ class App {
     const userPhoto = this.getUserPhoto(media);
     const Filter = new FilterForm(userPhoto, this.totalLikesCounter);
     Filter.render();
-    console.log("media ", await getPhotographers());
+    //console.log("media ", await getPhotographers());
     this.displayData(photographers);
 
     this.displayPhotos(photographers, userPhoto);

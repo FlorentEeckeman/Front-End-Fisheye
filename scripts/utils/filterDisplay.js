@@ -24,6 +24,7 @@ function filterDisplay() {
       c.innerHTML = selElmnt.options[j].innerHTML;
       c.setAttribute("value", j - 1);
       c.setAttribute("tabindex", "0");
+      c.setAttribute("aria-label", selElmnt.options[j].innerHTML);
       /* c.addEventListener("click", selectitem);
       /* When an item is clicked, update the original select box,
           and the selected item: 

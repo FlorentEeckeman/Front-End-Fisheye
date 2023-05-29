@@ -100,25 +100,25 @@ class LightBox {
         });
     });
   }
-  navigate(e) {
+  navigation(e) {
     const that = this;
     if (e.key == "ArrowRight") {
       const index = document.getElementById("container-Photos");
-      this.setPos(parseInt(index.dataset.id, 10) + 1);
+      that.setPos(parseInt(index.dataset.id, 10) + 1);
     }
     if (e.key == "ArrowLeft") {
       const index = document.getElementById("container-Photos");
-      this.setPos(parseInt(index.dataset.id, 10) - 1);
+      that.setPos(parseInt(index.dataset.id, 10) - 1);
     }
     if (e.key == "Escape") {
-      this.closeModal();
+      that.closeModal();
     }
   }
   keyboardNavigation() {
-    const that = this;
+    console.log("keyboard");
     document.getElementById("lightBox_modal");
-    const keyboard = document.getElementById("lightBox_modal");
-    document.addEventListener("keyup", this.navigate);
+    this.callback = this.navigation.bind(this);
+    document.addEventListener("keyup", this.callback, true);
   }
   // display arrows in relation to index position
   displayArrows(styleIndex) {
@@ -157,12 +157,15 @@ class LightBox {
   }
 
   closeModal() {
+    console.log("close");
+
     const modal = document.getElementById("lightBox_modal");
     modal.style.display = "none";
     const main = document.getElementById("main");
     main.style.display = "block";
     this.enablePhotoTabIndex();
-    document.removeEventListener("keyup", keyboardNavigation);
+
+    document.removeEventListener("keyup", this.callback, true);
   }
   enablePhotoTabIndex() {
     const photos = document.querySelectorAll(".photo");
